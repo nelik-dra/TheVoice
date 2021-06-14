@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="COEUS_MSSQLDWHDEV.TheVoice_MRR_STG_DWH"
+  DTS:DTSID="{2A9574C3-84D9-4BFF-93CE-CD3DA9769297}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=COEUS\MSSQLDWHDEV;Initial Catalog=TheVoice_MRR_STG_DWH;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

@@ -1,0 +1,8 @@
+call_type_code,call_type_desc,priceperminuter,call_type
+TXTR,Text Message Received,0.2,Message
+TXTS,Text Message Sent,0.97,Message
+UINT,Unlimited IN TEXT,0.09,Message
+UPFX,Unlimited IN PIX-FLIX,0.01,Message
+VCST,V CAST Music Purchases,0.56,Data
+WI,Wireless Integration,0.44,Data
+WWR,Sprint Worldwide Roaming,0.32,Data

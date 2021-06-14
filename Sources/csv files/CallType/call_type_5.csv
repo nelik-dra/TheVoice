@@ -1,0 +1,21 @@
+call_type_code,call_type_desc,priceperminuter,call_type
+3W,Three-way call,0.9,Voice
+AC,Audio Conferencing,0.44,Voice
+CALL,Cellular Call,0.65,Voice
+CF,Call Forwarding,0.99,Voice
+CW,Call Waiting,0.72,Voice
+DA,Directory Assistance,0.51,Data
+OS,Operator Serice,0.58,Voice
+P2T,Push-to-Talk,0.66,Data
+PFXR,PIX-FLIX Messaging Received,0.63,Message
+PFXS,PIX-FLIX Messaging Sent,0.03,Message
+PFXT,Premium Text Messaging,0.45,Message
+ROAM,Cellular Roaming,0.73,Voice
+SH,Sprint-to-Home,0.87,Voice
+SO,Sprint-to-Office,0.07,Voice
+TEXT,Text Messaging,0.24,Message
+UPFX,Unlimited IN PIX-FLIX,0.01,Message
+VCST,V CAST Music Purchases,0.56,Data
+VM,VoiceMail,0.78,Voice
+WI,Wireless Integration,0.44,Data
+WWR,Sprint Worldwide Roaming,0.32,Data

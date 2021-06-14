@@ -1,0 +1,7 @@
+C:\VoiceDB\TheVoices\TheVoiceTabular\TheVoiceTabular\bin\Model.asdatabase
+C:\VoiceDB\TheVoices\TheVoiceTabular\TheVoiceTabular\bin\Model.deploymenttargets
+C:\VoiceDB\TheVoices\TheVoiceTabular\TheVoiceTabular\bin\Model.deploymentoptions
+C:\VoiceDB\TheVoices\TheVoiceTabular\TheVoiceTabular\obj\Development\TheVoiceTabular.smproj.CoreCompileInputs.cache
+C:\VoiceDB\TheVoices\TheVoiceTabular\TheVoiceTabular\obj\Development\Model.asdatabase
+C:\VoiceDB\TheVoices\TheVoiceTabular\TheVoiceTabular\obj\Development\Model.deploymentoptions
+C:\VoiceDB\TheVoices\TheVoiceTabular\TheVoiceTabular\obj\Development\Model.deploymenttargets

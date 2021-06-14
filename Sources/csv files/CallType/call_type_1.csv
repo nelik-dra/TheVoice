@@ -1,0 +1,10 @@
+call_type_code,call_type_desc,priceperminuter,call_type
+3W,Three-way call,0.9,Voice
+AC,Audio Conferencing,0.44,Voice
+CALL,Cellular Call,0.65,Voice
+CF,Call Forwarding,0.99,Voice
+CW,Call Waiting,0.72,Voice
+DA,Directory Assistance,0.51,Data
+DATA,Data Connection,0.04,Data
+DS,Dial Up Service,0.68,Voice
+EM2M,Expanded Mobile-to-Mobile Call,0.95,Voice

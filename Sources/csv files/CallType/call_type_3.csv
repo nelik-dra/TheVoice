@@ -1,0 +1,16 @@
+call_type_code,call_type_desc,priceperminuter,call_type
+M2M,Mobile-to-Mobile,0.61,Voice
+MLTM,Multimedia Text Message,0.02,Message
+NWT,National Walkie Talkie,0.18,Data
+OS,Operator Serice,0.58,Voice
+P2T,Push-to-Talk,0.66,Data
+PFXR,PIX-FLIX Messaging Received,0.63,Message
+PFXS,PIX-FLIX Messaging Sent,0.03,Message
+PFXT,Premium Text Messaging,0.45,Message
+ROAM,Cellular Roaming,0.73,Voice
+SH,Sprint-to-Home,0.87,Voice
+SO,Sprint-to-Office,0.07,Voice
+TEXT,Text Messaging,0.24,Message
+TPFX,TEXT/PIX-FLIX,0.34,Message
+TXTR,Text Message Received,0.2,Message
+TXTS,Text Message Sent,0.97,Message

@@ -1,0 +1,1448 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1200,
+  "model": {
+    "culture": "he-IL",
+    "dataSources": [
+      {
+        "name": "SqlServer MA055093MSSQLSERVER01 TheVoice_MRR_STG_DWH",
+        "connectionString": "Provider=SQLNCLI11;Data Source=COEUS\\MSSQLDWHDEV;Initial Catalog=TheVoice_MRR_STG_DWH;Integrated Security=SSPI;Persist Security Info=false",
+        "impersonationMode": "impersonateAccount",
+        "account": "cc\\nellys",
+        "annotations": [
+          {
+            "name": "ConnectionEditUISource",
+            "value": "SqlServer"
+          }
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "name": "Dim_Date",
+        "dataCategory": "Time",
+        "columns": [
+          {
+            "name": "DateKey",
+            "dataType": "int64",
+            "sourceColumn": "DateKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "isKey": true,
+            "sourceColumn": "Date",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "FullDateUK",
+            "dataType": "string",
+            "sourceColumn": "FullDateUK",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "FullDateUSA",
+            "dataType": "string",
+            "sourceColumn": "FullDateUSA",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DayOfMonth",
+            "dataType": "string",
+            "sourceColumn": "DayOfMonth",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DaySuffix",
+            "dataType": "string",
+            "sourceColumn": "DaySuffix",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DayName",
+            "dataType": "string",
+            "sourceColumn": "DayName",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DayOfWeekUSA",
+            "dataType": "string",
+            "sourceColumn": "DayOfWeekUSA",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DayOfWeekUK",
+            "dataType": "string",
+            "sourceColumn": "DayOfWeekUK",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DayOfWeekInMonth",
+            "dataType": "string",
+            "sourceColumn": "DayOfWeekInMonth",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DayOfWeekInYear",
+            "dataType": "string",
+            "sourceColumn": "DayOfWeekInYear",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DayOfQuarter",
+            "dataType": "string",
+            "sourceColumn": "DayOfQuarter",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "DayOfYear",
+            "dataType": "string",
+            "sourceColumn": "DayOfYear",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "WeekOfMonth",
+            "dataType": "string",
+            "sourceColumn": "WeekOfMonth",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "WeekOfQuarter",
+            "dataType": "string",
+            "sourceColumn": "WeekOfQuarter",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "WeekOfYear",
+            "dataType": "string",
+            "sourceColumn": "WeekOfYear",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Month",
+            "dataType": "int64",
+            "sourceColumn": "Month",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "MonthName",
+            "dataType": "string",
+            "sourceColumn": "MonthName",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "MonthOfQuarter",
+            "dataType": "string",
+            "sourceColumn": "MonthOfQuarter",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Quarter",
+            "dataType": "string",
+            "sourceColumn": "Quarter",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "QuarterName",
+            "dataType": "string",
+            "sourceColumn": "QuarterName",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Year",
+            "dataType": "string",
+            "sourceColumn": "Year",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "YearName",
+            "dataType": "string",
+            "sourceColumn": "YearName",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "MonthYear",
+            "dataType": "string",
+            "sourceColumn": "MonthYear",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "MMYYYY",
+            "dataType": "string",
+            "sourceColumn": "MMYYYY",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "FirstDayOfMonth",
+            "dataType": "dateTime",
+            "sourceColumn": "FirstDayOfMonth",
+            "formatString": "General Date",
+            "sourceProviderType": "DBDate"
+          },
+          {
+            "name": "LastDayOfMonth",
+            "dataType": "dateTime",
+            "sourceColumn": "LastDayOfMonth",
+            "formatString": "General Date",
+            "sourceProviderType": "DBDate"
+          },
+          {
+            "name": "FirstDayOfQuarter",
+            "dataType": "dateTime",
+            "sourceColumn": "FirstDayOfQuarter",
+            "formatString": "General Date",
+            "sourceProviderType": "DBDate"
+          },
+          {
+            "name": "LastDayOfQuarter",
+            "dataType": "dateTime",
+            "sourceColumn": "LastDayOfQuarter",
+            "formatString": "General Date",
+            "sourceProviderType": "DBDate"
+          },
+          {
+            "name": "FirstDayOfYear",
+            "dataType": "dateTime",
+            "sourceColumn": "FirstDayOfYear",
+            "formatString": "General Date",
+            "sourceProviderType": "DBDate"
+          },
+          {
+            "name": "LastDayOfYear",
+            "dataType": "dateTime",
+            "sourceColumn": "LastDayOfYear",
+            "formatString": "General Date",
+            "sourceProviderType": "DBDate"
+          },
+          {
+            "name": "IsHolidayUSA",
+            "dataType": "boolean",
+            "sourceColumn": "IsHolidayUSA",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "Boolean"
+          },
+          {
+            "name": "IsWeekdayStyle1",
+            "dataType": "boolean",
+            "sourceColumn": "IsWeekdayStyle1",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "Boolean"
+          },
+          {
+            "name": "IsWeekdayStyle2",
+            "dataType": "boolean",
+            "sourceColumn": "IsWeekdayStyle2",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "Boolean"
+          },
+          {
+            "name": "HolidayUSA",
+            "dataType": "string",
+            "sourceColumn": "HolidayUSA",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "IsHolidayUK",
+            "dataType": "boolean",
+            "sourceColumn": "IsHolidayUK",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "Boolean"
+          },
+          {
+            "name": "HolidayUK",
+            "dataType": "string",
+            "sourceColumn": "HolidayUK",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_Date",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [DWH].[Dim_Date].* FROM [DWH].[Dim_Date] ",
+              "dataSource": "SqlServer MA055093MSSQLSERVER01 TheVoice_MRR_STG_DWH"
+            }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Year_Month_Date",
+            "levels": [
+              {
+                "name": "Month",
+                "ordinal": 1,
+                "column": "Month"
+              },
+              {
+                "name": "Year",
+                "ordinal": 0,
+                "column": "Year"
+              },
+              {
+                "name": "Date",
+                "ordinal": 2,
+                "column": "Date"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [DWH].[Dim_Date].* FROM [DWH].[Dim_Date] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Dim_Date"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "DWH"
+          }
+        ]
+      },
+      {
+        "name": "dim_time",
+        "columns": [
+          {
+            "name": "TimeKey",
+            "dataType": "int64",
+            "sourceColumn": "TimeKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "TimeAltKey",
+            "dataType": "dateTime",
+            "sourceColumn": "TimeAltKey",
+            "formatString": "General Date",
+            "sourceProviderType": "145"
+          },
+          {
+            "name": "HourOfDay",
+            "dataType": "int64",
+            "sourceColumn": "HourOfDay",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "MinuteOfHour",
+            "dataType": "int64",
+            "sourceColumn": "MinuteOfHour",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "SecondOfMinute",
+            "dataType": "int64",
+            "sourceColumn": "SecondOfMinute",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "TimeString",
+            "dataType": "string",
+            "sourceColumn": "TimeString",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_time",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [DWH].[dim_time].* FROM [DWH].[dim_time] ",
+              "dataSource": "SqlServer MA055093MSSQLSERVER01 TheVoice_MRR_STG_DWH"
+            }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Hour_Minute",
+            "levels": [
+              {
+                "name": "HourOfDay",
+                "ordinal": 0,
+                "column": "HourOfDay"
+              },
+              {
+                "name": "MinuteOfHour",
+                "ordinal": 1,
+                "column": "MinuteOfHour"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [DWH].[dim_time].* FROM [DWH].[dim_time] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "dim_time"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "DWH"
+          }
+        ]
+      },
+      {
+        "name": "DimCallOriginType",
+        "columns": [
+          {
+            "name": "SKeyCallOriginType",
+            "dataType": "int64",
+            "sourceColumn": "SKeyCallOriginType",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "KeyCallOriginType",
+            "dataType": "int64",
+            "sourceColumn": "KeyCallOriginType",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "DescCallOriginType",
+            "dataType": "string",
+            "sourceColumn": "DescCallOriginType",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "IsCurrent",
+            "dataType": "string",
+            "sourceColumn": "IsCurrent",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "StartTime",
+            "dataType": "dateTime",
+            "sourceColumn": "StartTime",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "Endtime",
+            "dataType": "dateTime",
+            "sourceColumn": "Endtime",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimCallOriginType",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [DWH].[DimCallOriginType].* FROM [DWH].[DimCallOriginType] ",
+              "dataSource": "SqlServer MA055093MSSQLSERVER01 TheVoice_MRR_STG_DWH"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [DWH].[DimCallOriginType].* FROM [DWH].[DimCallOriginType] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimCallOriginType"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "DWH"
+          }
+        ]
+      },
+      {
+        "name": "DimCallTypes",
+        "columns": [
+          {
+            "name": "SKeyCallType",
+            "dataType": "int64",
+            "sourceColumn": "SKeyCallType",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "DescCallTypeCode",
+            "dataType": "string",
+            "sourceColumn": "DescCallTypeCode",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "DescCallType",
+            "dataType": "string",
+            "sourceColumn": "DescCallType",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "DescFullCallType",
+            "dataType": "string",
+            "sourceColumn": "DescFullCallType",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "DescCallTypePriceCategory",
+            "dataType": "string",
+            "sourceColumn": "DescCallTypePriceCategory",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "DescCallTypeCategory",
+            "dataType": "string",
+            "sourceColumn": "DescCallTypeCategory",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "IsCurrent",
+            "dataType": "string",
+            "sourceColumn": "IsCurrent",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "StartTime",
+            "dataType": "dateTime",
+            "sourceColumn": "StartTime",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "Endtime",
+            "dataType": "dateTime",
+            "sourceColumn": "Endtime",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimCallTypes",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [DWH].[DimCallTypes].* FROM [DWH].[DimCallTypes] ",
+              "dataSource": "SqlServer MA055093MSSQLSERVER01 TheVoice_MRR_STG_DWH"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [DWH].[DimCallTypes].* FROM [DWH].[DimCallTypes] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimCallTypes"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "DWH"
+          }
+        ]
+      },
+      {
+        "name": "dimCountries_Origin",
+        "columns": [
+          {
+            "name": "SKeyCountry",
+            "dataType": "int64",
+            "sourceColumn": "SKeyCountry",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "KeyCountry",
+            "dataType": "int64",
+            "sourceColumn": "KeyCountry",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "DescCountry",
+            "dataType": "string",
+            "sourceColumn": "DescCountry",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "DescRegion",
+            "dataType": "string",
+            "sourceColumn": "DescRegion",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "DescArea",
+            "dataType": "string",
+            "sourceColumn": "DescArea",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimCountries",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [DWH].[DimCountries].* FROM [DWH].[DimCountries] ",
+              "dataSource": "SqlServer MA055093MSSQLSERVER01 TheVoice_MRR_STG_DWH"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [DWH].[DimCountries].* FROM [DWH].[DimCountries] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimCountries"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "DWH"
+          }
+        ]
+      },
+      {
+        "name": "DimCustomers",
+        "columns": [
+          {
+            "name": "SKeyCustomer",
+            "dataType": "int64",
+            "sourceColumn": "SKeyCustomer",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "KeyCustomer",
+            "dataType": "int64",
+            "sourceColumn": "KeyCustomer",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "DescCustomerLineOperator",
+            "dataType": "string",
+            "sourceColumn": "DescCustomerLineOperator",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "DescCustomerLineCountry",
+            "dataType": "string",
+            "sourceColumn": "DescCustomerLineCountry",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "DescCustomerName",
+            "dataType": "string",
+            "sourceColumn": "DescCustomerName",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "DescCustomerAddress",
+            "dataType": "string",
+            "sourceColumn": "DescCustomerAddress",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "DescCusomterPackage",
+            "dataType": "string",
+            "sourceColumn": "DescCusomterPackage",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "IsCurrent",
+            "dataType": "string",
+            "sourceColumn": "IsCurrent",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "StartTime",
+            "dataType": "dateTime",
+            "sourceColumn": "StartTime",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "Endtime",
+            "dataType": "dateTime",
+            "sourceColumn": "Endtime",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimCustomers",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [DWH].[DimCustomers].* FROM [DWH].[DimCustomers] ",
+              "dataSource": "SqlServer MA055093MSSQLSERVER01 TheVoice_MRR_STG_DWH"
+            }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Customer_Package",
+            "levels": [
+              {
+                "name": "DescCustomerName",
+                "ordinal": 0,
+                "column": "DescCustomerName"
+              },
+              {
+                "name": "DescCusomterPackage",
+                "ordinal": 1,
+                "column": "DescCusomterPackage"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [DWH].[DimCustomers].* FROM [DWH].[DimCustomers] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimCustomers"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "DWH"
+          }
+        ]
+      },
+      {
+        "name": "DimOperators_Origin",
+        "columns": [
+          {
+            "name": "SKeyOperator",
+            "dataType": "int64",
+            "sourceColumn": "SKeyOperator",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "KeyOperator",
+            "dataType": "int64",
+            "sourceColumn": "KeyOperator",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "DescOperator",
+            "dataType": "string",
+            "sourceColumn": "DescOperator",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "DescKeyPrefix",
+            "dataType": "string",
+            "sourceColumn": "DescKeyPrefix",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "IsCurrent",
+            "dataType": "string",
+            "sourceColumn": "IsCurrent",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "StartTime",
+            "dataType": "dateTime",
+            "sourceColumn": "StartTime",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "Endtime",
+            "dataType": "dateTime",
+            "sourceColumn": "Endtime",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimOperators",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [DWH].[DimOperators].* FROM [DWH].[DimOperators] ",
+              "dataSource": "SqlServer MA055093MSSQLSERVER01 TheVoice_MRR_STG_DWH"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [DWH].[DimOperators].* FROM [DWH].[DimOperators] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimOperators"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "DWH"
+          }
+        ]
+      },
+      {
+        "name": "DimPackageCatalog",
+        "columns": [
+          {
+            "name": "SKeyPackage",
+            "dataType": "int64",
+            "sourceColumn": "SKeyPackage",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "KeyPackage",
+            "dataType": "int64",
+            "sourceColumn": "KeyPackage",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "DescPackage",
+            "dataType": "string",
+            "sourceColumn": "DescPackage",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "DatePackageCreation",
+            "dataType": "dateTime",
+            "sourceColumn": "DatePackageCreation",
+            "formatString": "General Date",
+            "sourceProviderType": "DBDate"
+          },
+          {
+            "name": "DatePackageEnd",
+            "dataType": "dateTime",
+            "sourceColumn": "DatePackageEnd",
+            "formatString": "General Date",
+            "sourceProviderType": "DBDate"
+          },
+          {
+            "name": "DescPackageStatus",
+            "dataType": "string",
+            "sourceColumn": "DescPackageStatus",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "CodePackageActivitiesDays",
+            "dataType": "int64",
+            "sourceColumn": "CodePackageActivitiesDays",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "IsCurrent",
+            "dataType": "string",
+            "sourceColumn": "IsCurrent",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "StartTime",
+            "dataType": "dateTime",
+            "sourceColumn": "StartTime",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          },
+          {
+            "name": "Endtime",
+            "dataType": "dateTime",
+            "sourceColumn": "Endtime",
+            "formatString": "General Date",
+            "sourceProviderType": "DBTimeStamp"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "DimPackageCatalog",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [DWH].[DimPackageCatalog].* FROM [DWH].[DimPackageCatalog] ",
+              "dataSource": "SqlServer MA055093MSSQLSERVER01 TheVoice_MRR_STG_DWH"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [DWH].[DimPackageCatalog].* FROM [DWH].[DimPackageCatalog] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "DimPackageCatalog"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "DWH"
+          }
+        ]
+      },
+      {
+        "name": "FactUsage",
+        "columns": [
+          {
+            "name": "CallId",
+            "dataType": "int64",
+            "sourceColumn": "CallId",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "SKeyCustomer",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "SKeyCustomer",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "SKeyCallType",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "SKeyCallType",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "SKeyOriginCountry",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "SKeyOriginCountry",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "SKeyDestinationCountry",
+            "dataType": "int64",
+            "sourceColumn": "SKeyDestinationCountry",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "SKeyOriginOperator",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "SKeyOriginOperator",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "SKeyDestinationOperator",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "SKeyDestinationOperator",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "SKeyPackage",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "SKeyPackage",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "SKeyCallOriginType",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "SKeyCallOriginType",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "KeyCallDate",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "KeyCallDate",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "KeyCallTime",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "KeyCallTime",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Duration",
+            "dataType": "int64",
+            "sourceColumn": "Duration",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "BillableDuration",
+            "dataType": "int64",
+            "sourceColumn": "BillableDuration",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Amount",
+            "dataType": "double",
+            "sourceColumn": "Amount",
+            "sourceProviderType": "Double"
+          },
+          {
+            "name": "BillableAmount",
+            "dataType": "double",
+            "sourceColumn": "BillableAmount",
+            "sourceProviderType": "Double"
+          },
+          {
+            "type": "calculated",
+            "name": "OriginalCall_Cell_or_Land",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "RELATED(DimCallOriginType[DescCallOriginType])"
+          },
+          {
+            "type": "calculated",
+            "name": "Customer_Name",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "RELATED(DimCustomers[DescCustomerName])"
+          },
+          {
+            "type": "calculated",
+            "name": "call_origin_Area",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "related(dimCountries_Origin[DescArea])"
+          },
+          {
+            "type": "calculated",
+            "name": "Call_Type_desc",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "related(DimCallTypes[DescCallType])"
+          },
+          {
+            "type": "calculated",
+            "name": "call_origin_country",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "related(dimCountries_Origin[DescCountry])"
+          },
+          {
+            "type": "calculated",
+            "name": "call_type_Category",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "related(DimCallTypes[DescCallTypeCategory])"
+          },
+          {
+            "type": "calculated",
+            "name": "call_type_price_category",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "related(DimCallTypes[DescCallTypePriceCategory])"
+          },
+          {
+            "type": "calculated",
+            "name": "call_origin_region",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "related(dimCountries_Origin[DescRegion])"
+          },
+          {
+            "type": "calculated",
+            "name": "call_Dest_Region",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "Related(dimCountries_destination[DescRegion])"
+          },
+          {
+            "type": "calculated",
+            "name": "call_Dest_Area",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "related(dimCountries_destination[DescArea])"
+          },
+          {
+            "type": "calculated",
+            "name": "call_dest_country",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "RELATED(dimCountries_destination[DescCountry])"
+          },
+          {
+            "type": "calculated",
+            "name": "Origin_operator_prefix",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "related(DimOperators_Origin[DescKeyPrefix])"
+          },
+          {
+            "type": "calculated",
+            "name": "Origin_operator_Desc",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "RELATED(DimOperators_Origin[DescOperator])"
+          },
+          {
+            "type": "calculated",
+            "name": "Dest_operator_prefix",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "related(DimOperators_destination[DescKeyPrefix])"
+          },
+          {
+            "type": "calculated",
+            "name": "Dest_operator_Desc",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "related(DimOperators_destination[DescOperator])"
+          },
+          {
+            "type": "calculated",
+            "name": "Package_Desc",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "related(DimPackageCatalog[DescPackage])"
+          },
+          {
+            "type": "calculated",
+            "name": "Call_date",
+            "dataType": "dateTime",
+            "isDataTypeInferred": true,
+            "expression": "related(Dim_Date[Date])"
+          },
+          {
+            "type": "calculated",
+            "name": "call_dayOfWeek",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "RELATED(Dim_Date[DayOfWeekUK])"
+          },
+          {
+            "type": "calculated",
+            "name": "Time_hour",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": "RELATED(dim_time[HourOfDay])"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "FactUsage",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [DWH].[FactUsage].* FROM [DWH].[FactUsage] ",
+              "dataSource": "SqlServer MA055093MSSQLSERVER01 TheVoice_MRR_STG_DWH"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "NumberOfCalls",
+            "expression": "count(FactUsage[CallId])"
+          },
+          {
+            "name": "NumberOfCustomersMakingCalls",
+            "expression": "DISTINCTCOUNT(FactUsage[SKeyCustomer])"
+          },
+          {
+            "name": "SumofCallduration",
+            "expression": "sum(FactUsage[Duration])"
+          },
+          {
+            "name": "SumOfBillableDuration",
+            "expression": "sum(FactUsage[BillableDuration])"
+          },
+          {
+            "name": "SumOfAmount",
+            "expression": "sum(FactUsage[Amount])",
+            "kpi": {
+              "targetExpression": "'FactUsage'[SumofCallduration]",
+              "statusGraphic": "Traffic Light - Single",
+              "statusExpression": [
+                "var x='FactUsage'[SumOfAmount]/'FactUsage'[_SumOfAmount Goal] return",
+                "            if(ISBLANK(x),BLANK(),",
+                "                    If(x<0.4,-1,",
+                "\t                If(x<0.8,0,1)",
+                "                )",
+                "            )",
+                "            "
+              ],
+              "annotations": [
+                {
+                  "name": "GoalType",
+                  "value": "Measure"
+                },
+                {
+                  "name": "KpiStatusType",
+                  "value": "Linear"
+                },
+                {
+                  "name": "KpiThresholdType",
+                  "value": "Percentage"
+                },
+                {
+                  "name": "KpiThresholdOrdering",
+                  "value": "Ascending"
+                },
+                {
+                  "name": "KpiThresholdCount",
+                  "value": "2"
+                },
+                {
+                  "name": "KpiThreshold_0",
+                  "value": "40"
+                },
+                {
+                  "name": "KpiThreshold_1",
+                  "value": "80"
+                }
+              ]
+            }
+          },
+          {
+            "name": "SumOfBillableAmount",
+            "expression": "sum(FactUsage[BillableAmount])"
+          },
+          {
+            "name": "CallDurationAverage",
+            "expression": "AVERAGE(FactUsage[Duration])"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "H_OriginRegionAreaCountry",
+            "levels": [
+              {
+                "name": "call_origin_Area",
+                "ordinal": 1,
+                "column": "call_origin_Area"
+              },
+              {
+                "name": "call_origin_country",
+                "ordinal": 2,
+                "column": "call_origin_country"
+              },
+              {
+                "name": "call_origin_region",
+                "ordinal": 0,
+                "column": "call_origin_region"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [DWH].[FactUsage].* FROM [DWH].[FactUsage] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "FactUsage"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "DWH"
+          }
+        ]
+      },
+      {
+        "name": "dimCountries_destination",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "SKeyCountry",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "dimCountries_Origin[SKeyCountry]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "KeyCountry",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "dimCountries_Origin[KeyCountry]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "DescCountry",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "dimCountries_Origin[DescCountry]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "DescRegion",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "dimCountries_Origin[DescRegion]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "DescArea",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "dimCountries_Origin[DescArea]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": " CALCULATETABLE(dimCountries_Origin)"
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimOperators_destination",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "SKeyOperator",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "DimOperators_Origin[SKeyOperator]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "KeyOperator",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "DimOperators_Origin[KeyOperator]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "DescOperator",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "DimOperators_Origin[DescOperator]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "DescKeyPrefix",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "DimOperators_Origin[DescKeyPrefix]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "IsCurrent",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "DimOperators_Origin[IsCurrent]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "StartTime",
+            "dataType": "dateTime",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "DimOperators_Origin[StartTime]"
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Endtime",
+            "dataType": "dateTime",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "DimOperators_Origin[Endtime]"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CalculatedTable 1",
+            "source": {
+              "type": "calculated",
+              "expression": " CALCULATETABLE(DimOperators_Origin) "
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "ad6df3b8-20c6-4d1b-b9f1-c35a47748738",
+        "fromTable": "FactUsage",
+        "fromColumn": "KeyCallDate",
+        "toTable": "Dim_Date",
+        "toColumn": "DateKey"
+      },
+      {
+        "name": "1191ecb6-f7f2-4946-b861-4739eea71031",
+        "fromTable": "FactUsage",
+        "fromColumn": "SKeyCallOriginType",
+        "toTable": "DimCallOriginType",
+        "toColumn": "SKeyCallOriginType"
+      },
+      {
+        "name": "de49e542-9606-43d1-a6bd-20c574b494f4",
+        "fromTable": "FactUsage",
+        "fromColumn": "SKeyPackage",
+        "toTable": "DimPackageCatalog",
+        "toColumn": "SKeyPackage"
+      },
+      {
+        "name": "345e6b71-3316-42f8-92fa-d95127abffc5",
+        "fromTable": "FactUsage",
+        "fromColumn": "SKeyOriginOperator",
+        "toTable": "DimOperators_Origin",
+        "toColumn": "SKeyOperator"
+      },
+      {
+        "name": "09739931-17fa-494f-b621-288a77c698d8",
+        "fromTable": "FactUsage",
+        "fromColumn": "SKeyDestinationOperator",
+        "toTable": "DimOperators_destination",
+        "toColumn": "SKeyOperator"
+      },
+      {
+        "name": "5ddad09e-3d79-4243-9542-55302e027512",
+        "fromTable": "FactUsage",
+        "fromColumn": "SKeyCustomer",
+        "toTable": "DimCustomers",
+        "toColumn": "SKeyCustomer",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "59094075-37e9-42d6-94d5-0e9e1090aa68",
+        "fromTable": "FactUsage",
+        "fromColumn": "SKeyDestinationCountry",
+        "toTable": "dimCountries_destination",
+        "toColumn": "SKeyCountry",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "21d699df-85d2-4021-bce5-c83da78cfae8",
+        "fromTable": "FactUsage",
+        "fromColumn": "SKeyOriginCountry",
+        "toTable": "dimCountries_Origin",
+        "toColumn": "SKeyCountry",
+        "crossFilteringBehavior": "bothDirections"
+      },
+      {
+        "name": "d8fb4871-7d70-4c2f-a5e8-f1220b8d87e6",
+        "fromTable": "FactUsage",
+        "fromColumn": "SKeyCallType",
+        "toTable": "DimCallTypes",
+        "toColumn": "SKeyCallType"
+      },
+      {
+        "name": "da17abf1-55d8-4e77-98bf-32ce18228541",
+        "fromTable": "FactUsage",
+        "fromColumn": "KeyCallTime",
+        "toTable": "dim_time",
+        "toColumn": "TimeKey"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "400"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}
