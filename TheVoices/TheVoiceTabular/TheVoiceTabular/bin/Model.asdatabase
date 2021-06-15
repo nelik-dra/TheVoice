@@ -528,6 +528,23 @@
             }
           }
         ],
+        "hierarchies": [
+          {
+            "name": "H_CallTypeCategory",
+            "levels": [
+              {
+                "name": "DescCallTypeCategory",
+                "ordinal": 0,
+                "column": "DescCallTypeCategory"
+              },
+              {
+                "name": "DescFullCallType",
+                "ordinal": 1,
+                "column": "DescFullCallType"
+              }
+            ]
+          }
+        ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
@@ -1103,17 +1120,52 @@
           },
           {
             "type": "calculated",
-            "name": "call_dayOfWeek",
-            "dataType": "string",
-            "isDataTypeInferred": true,
-            "expression": "RELATED(Dim_Date[DayOfWeekUK])"
-          },
-          {
-            "type": "calculated",
             "name": "Time_hour",
             "dataType": "int64",
             "isDataTypeInferred": true,
             "expression": "RELATED(dim_time[HourOfDay])"
+          },
+          {
+            "type": "calculated",
+            "name": "Discount",
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "expression": "FactUsage[Amount]-FactUsage[BillableAmount]"
+          },
+          {
+            "type": "calculated",
+            "name": "Discount_Percent",
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "expression": "if(FactUsage[Amount]<>0, FactUsage[Discount]/FactUsage[Amount],0)"
+          },
+          {
+            "type": "calculated",
+            "name": "CallDayOfWeek",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "RELATED(Dim_Date[DayName])"
+          },
+          {
+            "type": "calculated",
+            "name": "CallMonth",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "related(Dim_Date[MonthName])"
+          },
+          {
+            "type": "calculated",
+            "name": "CallYear",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "related(Dim_Date[Year])"
+          },
+          {
+            "type": "calculated",
+            "name": "customerPackage",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "related(DimCustomers[DescCusomterPackage])"
           }
         ],
         "partitions": [
@@ -1130,28 +1182,12 @@
         "measures": [
           {
             "name": "NumberOfCalls",
-            "expression": "count(FactUsage[CallId])"
-          },
-          {
-            "name": "NumberOfCustomersMakingCalls",
-            "expression": "DISTINCTCOUNT(FactUsage[SKeyCustomer])"
-          },
-          {
-            "name": "SumofCallduration",
-            "expression": "sum(FactUsage[Duration])"
-          },
-          {
-            "name": "SumOfBillableDuration",
-            "expression": "sum(FactUsage[BillableDuration])"
-          },
-          {
-            "name": "SumOfAmount",
-            "expression": "sum(FactUsage[Amount])",
+            "expression": "count(FactUsage[CallId])",
             "kpi": {
-              "targetExpression": "'FactUsage'[SumofCallduration]",
+              "targetExpression": "'FactUsage'[Previous year]",
               "statusGraphic": "Traffic Light - Single",
               "statusExpression": [
-                "var x='FactUsage'[SumOfAmount]/'FactUsage'[_SumOfAmount Goal] return",
+                "var x='FactUsage'[NumberOfCalls]/'FactUsage'[_NumberOfCalls Goal] return",
                 "            if(ISBLANK(x),BLANK(),",
                 "                    If(x<0.4,-1,",
                 "\t                If(x<0.8,0,1)",
@@ -1192,12 +1228,75 @@
             }
           },
           {
+            "name": "NumberOfCustomersMakingCalls",
+            "expression": "DISTINCTCOUNT(FactUsage[SKeyCustomer])"
+          },
+          {
+            "name": "SumofCallduration",
+            "expression": "sum(FactUsage[Duration])"
+          },
+          {
+            "name": "SumOfBillableDuration",
+            "expression": "sum(FactUsage[BillableDuration])",
+            "kpi": {
+              "targetExpression": "4",
+              "statusGraphic": "Shapes",
+              "statusExpression": [
+                "var x='FactUsage'[SumOfBillableDuration] return",
+                "            if(ISBLANK(x),BLANK(),",
+                "                    If(x<1.79,-1,",
+                "\t                If(x<3.2,0,1)",
+                "                )",
+                "            )",
+                "            "
+              ],
+              "annotations": [
+                {
+                  "name": "GoalType",
+                  "value": "StaticValue"
+                },
+                {
+                  "name": "KpiStatusType",
+                  "value": "Linear"
+                },
+                {
+                  "name": "KpiThresholdType",
+                  "value": "Absolute"
+                },
+                {
+                  "name": "KpiThresholdOrdering",
+                  "value": "Ascending"
+                },
+                {
+                  "name": "KpiThresholdCount",
+                  "value": "2"
+                },
+                {
+                  "name": "KpiThreshold_0",
+                  "value": "1.79"
+                },
+                {
+                  "name": "KpiThreshold_1",
+                  "value": "3.2"
+                }
+              ]
+            }
+          },
+          {
+            "name": "SumOfAmount",
+            "expression": "sum(FactUsage[Amount])"
+          },
+          {
             "name": "SumOfBillableAmount",
             "expression": "sum(FactUsage[BillableAmount])"
           },
           {
             "name": "CallDurationAverage",
             "expression": "AVERAGE(FactUsage[Duration])"
+          },
+          {
+            "name": "Previous year",
+            "expression": "CALCULATE(count(FactUsage[CallId]),SAMEPERIODLASTYEAR(FactUsage[Call_date]))"
           }
         ],
         "hierarchies": [
@@ -1218,6 +1317,41 @@
                 "name": "call_origin_region",
                 "ordinal": 0,
                 "column": "call_origin_region"
+              }
+            ]
+          },
+          {
+            "name": "H_Call_YearMonthDay",
+            "levels": [
+              {
+                "name": "CallMonth",
+                "ordinal": 1,
+                "column": "CallMonth"
+              },
+              {
+                "name": "CallYear",
+                "ordinal": 0,
+                "column": "CallYear"
+              },
+              {
+                "name": "CallDayOfWeek",
+                "ordinal": 2,
+                "column": "CallDayOfWeek"
+              }
+            ]
+          },
+          {
+            "name": "H_customerPackages",
+            "levels": [
+              {
+                "name": "customerPackage",
+                "ordinal": 0,
+                "column": "customerPackage"
+              },
+              {
+                "name": "Customer_Name",
+                "ordinal": 1,
+                "column": "Customer_Name"
               }
             ]
           }
