@@ -8,7 +8,7 @@
         "name": "SqlServer MA055093MSSQLSERVER01 TheVoice_MRR_STG_DWH",
         "connectionString": "Provider=SQLNCLI11;Data Source=COEUS\\MSSQLDWHDEV;Initial Catalog=TheVoice_MRR_STG_DWH;Integrated Security=SSPI;Persist Security Info=false",
         "impersonationMode": "impersonateAccount",
-        "account": "cc\\nellys",
+        "account": "user",
         "annotations": [
           {
             "name": "ConnectionEditUISource",
@@ -882,6 +882,23 @@
             }
           }
         ],
+        "hierarchies": [
+          {
+            "name": "H_PackageAndStatus",
+            "levels": [
+              {
+                "name": "DescPackageStatus",
+                "ordinal": 0,
+                "column": "DescPackageStatus"
+              },
+              {
+                "name": "DescPackage",
+                "ordinal": 1,
+                "column": "DescPackage"
+              }
+            ]
+          }
+        ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",
@@ -1166,6 +1183,20 @@
             "dataType": "string",
             "isDataTypeInferred": true,
             "expression": "related(DimCustomers[DescCusomterPackage])"
+          },
+          {
+            "type": "calculated",
+            "name": "calltypeCode",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "related(DimCallTypes[DescCallTypeCode])"
+          },
+          {
+            "type": "calculated",
+            "name": "Calculated Column 1",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": "related(dimCountries_Origin[SKeyCountry])"
           }
         ],
         "partitions": [
@@ -1184,13 +1215,13 @@
             "name": "NumberOfCalls",
             "expression": "count(FactUsage[CallId])",
             "kpi": {
-              "targetExpression": "'FactUsage'[Previous year]",
+              "targetExpression": "20",
               "statusGraphic": "Traffic Light - Single",
               "statusExpression": [
-                "var x='FactUsage'[NumberOfCalls]/'FactUsage'[_NumberOfCalls Goal] return",
+                "var x='FactUsage'[NumberOfCalls] return",
                 "            if(ISBLANK(x),BLANK(),",
-                "                    If(x<0.4,-1,",
-                "\t                If(x<0.8,0,1)",
+                "                    If(x<8,-1,",
+                "\t                If(x<16,0,1)",
                 "                )",
                 "            )",
                 "            "
@@ -1198,7 +1229,7 @@
               "annotations": [
                 {
                   "name": "GoalType",
-                  "value": "Measure"
+                  "value": "StaticValue"
                 },
                 {
                   "name": "KpiStatusType",
@@ -1206,7 +1237,7 @@
                 },
                 {
                   "name": "KpiThresholdType",
-                  "value": "Percentage"
+                  "value": "Absolute"
                 },
                 {
                   "name": "KpiThresholdOrdering",
@@ -1218,11 +1249,11 @@
                 },
                 {
                   "name": "KpiThreshold_0",
-                  "value": "40"
+                  "value": "8"
                 },
                 {
                   "name": "KpiThreshold_1",
-                  "value": "80"
+                  "value": "16"
                 }
               ]
             }
@@ -1288,7 +1319,50 @@
           },
           {
             "name": "SumOfBillableAmount",
-            "expression": "sum(FactUsage[BillableAmount])"
+            "expression": "sum(FactUsage[BillableAmount])",
+            "kpi": {
+              "targetExpression": "4",
+              "statusGraphic": "Traffic Light - Single",
+              "statusExpression": [
+                "var x='FactUsage'[SumOfBillableAmount] return",
+                "            if(ISBLANK(x),BLANK(),",
+                "                    If(x<1.6,-1,",
+                "\t                If(x<3.2,0,1)",
+                "                )",
+                "            )",
+                "            "
+              ],
+              "annotations": [
+                {
+                  "name": "GoalType",
+                  "value": "StaticValue"
+                },
+                {
+                  "name": "KpiStatusType",
+                  "value": "Linear"
+                },
+                {
+                  "name": "KpiThresholdType",
+                  "value": "Absolute"
+                },
+                {
+                  "name": "KpiThresholdOrdering",
+                  "value": "Ascending"
+                },
+                {
+                  "name": "KpiThresholdCount",
+                  "value": "2"
+                },
+                {
+                  "name": "KpiThreshold_0",
+                  "value": "1.6"
+                },
+                {
+                  "name": "KpiThreshold_1",
+                  "value": "3.2"
+                }
+              ]
+            }
           },
           {
             "name": "CallDurationAverage",
@@ -1296,7 +1370,7 @@
           },
           {
             "name": "Previous year",
-            "expression": "CALCULATE(count(FactUsage[CallId]),SAMEPERIODLASTYEAR(FactUsage[Call_date]))"
+            "expression": "CALCULATE(count(FactUsage[CallId]),PREVIOUSYEAR(FactUsage[Call_date]))"
           }
         ],
         "hierarchies": [
@@ -1569,6 +1643,1642 @@
         "fromColumn": "KeyCallTime",
         "toTable": "dim_time",
         "toColumn": "TimeKey"
+      }
+    ],
+    "perspectives": [
+      {
+        "name": "מכירות",
+        "tables": [
+          {
+            "name": "Dim_Date",
+            "columns": [
+              {
+                "name": "Date"
+              },
+              {
+                "name": "DateKey"
+              },
+              {
+                "name": "DayName"
+              },
+              {
+                "name": "DayOfMonth"
+              },
+              {
+                "name": "DayOfQuarter"
+              },
+              {
+                "name": "DayOfWeekInMonth"
+              },
+              {
+                "name": "DayOfWeekInYear"
+              },
+              {
+                "name": "DayOfWeekUK"
+              },
+              {
+                "name": "DayOfWeekUSA"
+              },
+              {
+                "name": "DayOfYear"
+              },
+              {
+                "name": "DaySuffix"
+              },
+              {
+                "name": "FirstDayOfMonth"
+              },
+              {
+                "name": "FirstDayOfQuarter"
+              },
+              {
+                "name": "FirstDayOfYear"
+              },
+              {
+                "name": "FullDateUK"
+              },
+              {
+                "name": "FullDateUSA"
+              },
+              {
+                "name": "HolidayUK"
+              },
+              {
+                "name": "HolidayUSA"
+              },
+              {
+                "name": "IsHolidayUK"
+              },
+              {
+                "name": "IsHolidayUSA"
+              },
+              {
+                "name": "IsWeekdayStyle1"
+              },
+              {
+                "name": "IsWeekdayStyle2"
+              },
+              {
+                "name": "LastDayOfMonth"
+              },
+              {
+                "name": "LastDayOfQuarter"
+              },
+              {
+                "name": "LastDayOfYear"
+              },
+              {
+                "name": "MMYYYY"
+              },
+              {
+                "name": "Month"
+              },
+              {
+                "name": "MonthName"
+              },
+              {
+                "name": "MonthOfQuarter"
+              },
+              {
+                "name": "MonthYear"
+              },
+              {
+                "name": "Quarter"
+              },
+              {
+                "name": "QuarterName"
+              },
+              {
+                "name": "WeekOfMonth"
+              },
+              {
+                "name": "WeekOfQuarter"
+              },
+              {
+                "name": "WeekOfYear"
+              },
+              {
+                "name": "Year"
+              },
+              {
+                "name": "YearName"
+              }
+            ],
+            "hierarchies": [
+              {
+                "name": "Year_Month_Date"
+              }
+            ]
+          },
+          {
+            "name": "dim_time",
+            "columns": [
+              {
+                "name": "HourOfDay"
+              },
+              {
+                "name": "MinuteOfHour"
+              },
+              {
+                "name": "SecondOfMinute"
+              },
+              {
+                "name": "TimeAltKey"
+              },
+              {
+                "name": "TimeKey"
+              },
+              {
+                "name": "TimeString"
+              }
+            ],
+            "hierarchies": [
+              {
+                "name": "Hour_Minute"
+              }
+            ]
+          },
+          {
+            "name": "DimCallOriginType",
+            "columns": [
+              {
+                "name": "DescCallOriginType"
+              },
+              {
+                "name": "Endtime"
+              },
+              {
+                "name": "IsCurrent"
+              },
+              {
+                "name": "KeyCallOriginType"
+              },
+              {
+                "name": "SKeyCallOriginType"
+              },
+              {
+                "name": "StartTime"
+              }
+            ]
+          },
+          {
+            "name": "DimCallTypes",
+            "columns": [
+              {
+                "name": "DescCallType"
+              },
+              {
+                "name": "DescCallTypeCategory"
+              },
+              {
+                "name": "DescCallTypeCode"
+              },
+              {
+                "name": "DescCallTypePriceCategory"
+              },
+              {
+                "name": "DescFullCallType"
+              },
+              {
+                "name": "Endtime"
+              },
+              {
+                "name": "IsCurrent"
+              },
+              {
+                "name": "SKeyCallType"
+              },
+              {
+                "name": "StartTime"
+              }
+            ],
+            "hierarchies": [
+              {
+                "name": "H_CallTypeCategory"
+              }
+            ]
+          },
+          {
+            "name": "dimCountries_destination",
+            "columns": [
+              {
+                "name": "DescArea"
+              },
+              {
+                "name": "DescCountry"
+              },
+              {
+                "name": "DescRegion"
+              },
+              {
+                "name": "KeyCountry"
+              },
+              {
+                "name": "SKeyCountry"
+              }
+            ]
+          },
+          {
+            "name": "dimCountries_Origin",
+            "columns": [
+              {
+                "name": "DescArea"
+              },
+              {
+                "name": "DescCountry"
+              },
+              {
+                "name": "DescRegion"
+              },
+              {
+                "name": "KeyCountry"
+              },
+              {
+                "name": "SKeyCountry"
+              }
+            ]
+          },
+          {
+            "name": "DimCustomers",
+            "columns": [
+              {
+                "name": "DescCusomterPackage"
+              },
+              {
+                "name": "DescCustomerAddress"
+              },
+              {
+                "name": "DescCustomerLineCountry"
+              },
+              {
+                "name": "DescCustomerLineOperator"
+              },
+              {
+                "name": "DescCustomerName"
+              },
+              {
+                "name": "Endtime"
+              },
+              {
+                "name": "IsCurrent"
+              },
+              {
+                "name": "KeyCustomer"
+              },
+              {
+                "name": "SKeyCustomer"
+              },
+              {
+                "name": "StartTime"
+              }
+            ],
+            "hierarchies": [
+              {
+                "name": "Customer_Package"
+              }
+            ]
+          },
+          {
+            "name": "DimOperators_destination",
+            "columns": [
+              {
+                "name": "DescKeyPrefix"
+              },
+              {
+                "name": "DescOperator"
+              },
+              {
+                "name": "Endtime"
+              },
+              {
+                "name": "IsCurrent"
+              },
+              {
+                "name": "KeyOperator"
+              },
+              {
+                "name": "SKeyOperator"
+              },
+              {
+                "name": "StartTime"
+              }
+            ]
+          },
+          {
+            "name": "DimOperators_Origin",
+            "columns": [
+              {
+                "name": "DescKeyPrefix"
+              },
+              {
+                "name": "DescOperator"
+              },
+              {
+                "name": "Endtime"
+              },
+              {
+                "name": "IsCurrent"
+              },
+              {
+                "name": "KeyOperator"
+              },
+              {
+                "name": "SKeyOperator"
+              },
+              {
+                "name": "StartTime"
+              }
+            ]
+          },
+          {
+            "name": "DimPackageCatalog",
+            "columns": [
+              {
+                "name": "CodePackageActivitiesDays"
+              },
+              {
+                "name": "DatePackageCreation"
+              },
+              {
+                "name": "DatePackageEnd"
+              },
+              {
+                "name": "DescPackage"
+              },
+              {
+                "name": "DescPackageStatus"
+              },
+              {
+                "name": "Endtime"
+              },
+              {
+                "name": "IsCurrent"
+              },
+              {
+                "name": "KeyPackage"
+              },
+              {
+                "name": "SKeyPackage"
+              },
+              {
+                "name": "StartTime"
+              }
+            ]
+          },
+          {
+            "name": "FactUsage",
+            "columns": [
+              {
+                "name": "Amount"
+              },
+              {
+                "name": "BillableAmount"
+              },
+              {
+                "name": "BillableDuration"
+              },
+              {
+                "name": "Call_date"
+              },
+              {
+                "name": "call_Dest_Area"
+              },
+              {
+                "name": "call_dest_country"
+              },
+              {
+                "name": "call_Dest_Region"
+              },
+              {
+                "name": "call_origin_Area"
+              },
+              {
+                "name": "call_origin_country"
+              },
+              {
+                "name": "call_origin_region"
+              },
+              {
+                "name": "call_type_Category"
+              },
+              {
+                "name": "Call_Type_desc"
+              },
+              {
+                "name": "call_type_price_category"
+              },
+              {
+                "name": "CallDayOfWeek"
+              },
+              {
+                "name": "CallId"
+              },
+              {
+                "name": "CallMonth"
+              },
+              {
+                "name": "calltypeCode"
+              },
+              {
+                "name": "CallYear"
+              },
+              {
+                "name": "Customer_Name"
+              },
+              {
+                "name": "customerPackage"
+              },
+              {
+                "name": "Dest_operator_Desc"
+              },
+              {
+                "name": "Dest_operator_prefix"
+              },
+              {
+                "name": "Discount"
+              },
+              {
+                "name": "Discount_Percent"
+              },
+              {
+                "name": "Duration"
+              },
+              {
+                "name": "KeyCallDate"
+              },
+              {
+                "name": "KeyCallTime"
+              },
+              {
+                "name": "Origin_operator_Desc"
+              },
+              {
+                "name": "Origin_operator_prefix"
+              },
+              {
+                "name": "OriginalCall_Cell_or_Land"
+              },
+              {
+                "name": "Package_Desc"
+              },
+              {
+                "name": "SKeyCallOriginType"
+              },
+              {
+                "name": "SKeyCallType"
+              },
+              {
+                "name": "SKeyCustomer"
+              },
+              {
+                "name": "SKeyDestinationCountry"
+              },
+              {
+                "name": "SKeyDestinationOperator"
+              },
+              {
+                "name": "SKeyOriginCountry"
+              },
+              {
+                "name": "SKeyOriginOperator"
+              },
+              {
+                "name": "SKeyPackage"
+              },
+              {
+                "name": "Time_hour"
+              },
+              {
+                "name": "Calculated Column 1"
+              }
+            ],
+            "hierarchies": [
+              {
+                "name": "H_Call_YearMonthDay"
+              },
+              {
+                "name": "H_customerPackages"
+              },
+              {
+                "name": "H_OriginRegionAreaCountry"
+              }
+            ],
+            "measures": [
+              {
+                "name": "CallDurationAverage"
+              },
+              {
+                "name": "NumberOfCustomersMakingCalls"
+              },
+              {
+                "name": "Previous year"
+              },
+              {
+                "name": "SumOfAmount"
+              },
+              {
+                "name": "SumofCallduration"
+              },
+              {
+                "name": "NumberOfCalls"
+              },
+              {
+                "name": "SumOfBillableDuration"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "הנהלה",
+        "tables": [
+          {
+            "name": "Dim_Date",
+            "columns": [
+              {
+                "name": "Date"
+              },
+              {
+                "name": "DateKey"
+              },
+              {
+                "name": "DayName"
+              },
+              {
+                "name": "DayOfMonth"
+              },
+              {
+                "name": "DayOfQuarter"
+              },
+              {
+                "name": "DayOfWeekInMonth"
+              },
+              {
+                "name": "DayOfWeekInYear"
+              },
+              {
+                "name": "DayOfWeekUK"
+              },
+              {
+                "name": "DayOfWeekUSA"
+              },
+              {
+                "name": "DayOfYear"
+              },
+              {
+                "name": "DaySuffix"
+              },
+              {
+                "name": "FirstDayOfMonth"
+              },
+              {
+                "name": "FirstDayOfQuarter"
+              },
+              {
+                "name": "FirstDayOfYear"
+              },
+              {
+                "name": "FullDateUK"
+              },
+              {
+                "name": "FullDateUSA"
+              },
+              {
+                "name": "HolidayUK"
+              },
+              {
+                "name": "HolidayUSA"
+              },
+              {
+                "name": "IsHolidayUK"
+              },
+              {
+                "name": "IsHolidayUSA"
+              },
+              {
+                "name": "IsWeekdayStyle1"
+              },
+              {
+                "name": "IsWeekdayStyle2"
+              },
+              {
+                "name": "LastDayOfMonth"
+              },
+              {
+                "name": "LastDayOfQuarter"
+              },
+              {
+                "name": "LastDayOfYear"
+              },
+              {
+                "name": "MMYYYY"
+              },
+              {
+                "name": "Month"
+              },
+              {
+                "name": "MonthName"
+              },
+              {
+                "name": "MonthOfQuarter"
+              },
+              {
+                "name": "MonthYear"
+              },
+              {
+                "name": "Quarter"
+              },
+              {
+                "name": "QuarterName"
+              },
+              {
+                "name": "WeekOfMonth"
+              },
+              {
+                "name": "WeekOfQuarter"
+              },
+              {
+                "name": "WeekOfYear"
+              },
+              {
+                "name": "Year"
+              },
+              {
+                "name": "YearName"
+              }
+            ],
+            "hierarchies": [
+              {
+                "name": "Year_Month_Date"
+              }
+            ]
+          },
+          {
+            "name": "dim_time",
+            "columns": [
+              {
+                "name": "HourOfDay"
+              },
+              {
+                "name": "MinuteOfHour"
+              },
+              {
+                "name": "SecondOfMinute"
+              },
+              {
+                "name": "TimeAltKey"
+              },
+              {
+                "name": "TimeKey"
+              },
+              {
+                "name": "TimeString"
+              }
+            ],
+            "hierarchies": [
+              {
+                "name": "Hour_Minute"
+              }
+            ]
+          },
+          {
+            "name": "DimCallOriginType",
+            "columns": [
+              {
+                "name": "DescCallOriginType"
+              },
+              {
+                "name": "Endtime"
+              },
+              {
+                "name": "IsCurrent"
+              },
+              {
+                "name": "KeyCallOriginType"
+              },
+              {
+                "name": "SKeyCallOriginType"
+              },
+              {
+                "name": "StartTime"
+              }
+            ]
+          },
+          {
+            "name": "DimCallTypes",
+            "columns": [
+              {
+                "name": "DescCallType"
+              },
+              {
+                "name": "DescCallTypeCategory"
+              },
+              {
+                "name": "DescCallTypeCode"
+              },
+              {
+                "name": "DescCallTypePriceCategory"
+              },
+              {
+                "name": "DescFullCallType"
+              },
+              {
+                "name": "Endtime"
+              },
+              {
+                "name": "IsCurrent"
+              },
+              {
+                "name": "SKeyCallType"
+              },
+              {
+                "name": "StartTime"
+              }
+            ],
+            "hierarchies": [
+              {
+                "name": "H_CallTypeCategory"
+              }
+            ]
+          },
+          {
+            "name": "dimCountries_destination",
+            "columns": [
+              {
+                "name": "DescArea"
+              },
+              {
+                "name": "DescCountry"
+              },
+              {
+                "name": "DescRegion"
+              },
+              {
+                "name": "KeyCountry"
+              },
+              {
+                "name": "SKeyCountry"
+              }
+            ]
+          },
+          {
+            "name": "dimCountries_Origin",
+            "columns": [
+              {
+                "name": "DescArea"
+              },
+              {
+                "name": "DescCountry"
+              },
+              {
+                "name": "DescRegion"
+              },
+              {
+                "name": "KeyCountry"
+              },
+              {
+                "name": "SKeyCountry"
+              }
+            ]
+          },
+          {
+            "name": "DimCustomers",
+            "columns": [
+              {
+                "name": "DescCusomterPackage"
+              },
+              {
+                "name": "DescCustomerAddress"
+              },
+              {
+                "name": "DescCustomerLineCountry"
+              },
+              {
+                "name": "DescCustomerLineOperator"
+              },
+              {
+                "name": "DescCustomerName"
+              },
+              {
+                "name": "Endtime"
+              },
+              {
+                "name": "IsCurrent"
+              },
+              {
+                "name": "KeyCustomer"
+              },
+              {
+                "name": "SKeyCustomer"
+              },
+              {
+                "name": "StartTime"
+              }
+            ],
+            "hierarchies": [
+              {
+                "name": "Customer_Package"
+              }
+            ]
+          },
+          {
+            "name": "DimOperators_destination",
+            "columns": [
+              {
+                "name": "DescKeyPrefix"
+              },
+              {
+                "name": "DescOperator"
+              },
+              {
+                "name": "Endtime"
+              },
+              {
+                "name": "IsCurrent"
+              },
+              {
+                "name": "KeyOperator"
+              },
+              {
+                "name": "SKeyOperator"
+              },
+              {
+                "name": "StartTime"
+              }
+            ]
+          },
+          {
+            "name": "DimOperators_Origin",
+            "columns": [
+              {
+                "name": "DescKeyPrefix"
+              },
+              {
+                "name": "DescOperator"
+              },
+              {
+                "name": "Endtime"
+              },
+              {
+                "name": "IsCurrent"
+              },
+              {
+                "name": "KeyOperator"
+              },
+              {
+                "name": "SKeyOperator"
+              },
+              {
+                "name": "StartTime"
+              }
+            ]
+          },
+          {
+            "name": "DimPackageCatalog",
+            "columns": [
+              {
+                "name": "CodePackageActivitiesDays"
+              },
+              {
+                "name": "DatePackageCreation"
+              },
+              {
+                "name": "DatePackageEnd"
+              },
+              {
+                "name": "DescPackage"
+              },
+              {
+                "name": "DescPackageStatus"
+              },
+              {
+                "name": "Endtime"
+              },
+              {
+                "name": "IsCurrent"
+              },
+              {
+                "name": "KeyPackage"
+              },
+              {
+                "name": "SKeyPackage"
+              },
+              {
+                "name": "StartTime"
+              }
+            ],
+            "hierarchies": [
+              {
+                "name": "H_PackageAndStatus"
+              }
+            ]
+          },
+          {
+            "name": "FactUsage",
+            "columns": [
+              {
+                "name": "Amount"
+              },
+              {
+                "name": "BillableAmount"
+              },
+              {
+                "name": "BillableDuration"
+              },
+              {
+                "name": "Calculated Column 1"
+              },
+              {
+                "name": "Call_date"
+              },
+              {
+                "name": "call_Dest_Area"
+              },
+              {
+                "name": "call_dest_country"
+              },
+              {
+                "name": "call_Dest_Region"
+              },
+              {
+                "name": "call_origin_Area"
+              },
+              {
+                "name": "call_origin_country"
+              },
+              {
+                "name": "call_origin_region"
+              },
+              {
+                "name": "call_type_Category"
+              },
+              {
+                "name": "Call_Type_desc"
+              },
+              {
+                "name": "call_type_price_category"
+              },
+              {
+                "name": "CallDayOfWeek"
+              },
+              {
+                "name": "CallId"
+              },
+              {
+                "name": "CallMonth"
+              },
+              {
+                "name": "calltypeCode"
+              },
+              {
+                "name": "CallYear"
+              },
+              {
+                "name": "Customer_Name"
+              },
+              {
+                "name": "customerPackage"
+              },
+              {
+                "name": "Dest_operator_Desc"
+              },
+              {
+                "name": "Dest_operator_prefix"
+              },
+              {
+                "name": "Discount"
+              },
+              {
+                "name": "Discount_Percent"
+              },
+              {
+                "name": "Duration"
+              },
+              {
+                "name": "KeyCallDate"
+              },
+              {
+                "name": "KeyCallTime"
+              },
+              {
+                "name": "Origin_operator_Desc"
+              },
+              {
+                "name": "Origin_operator_prefix"
+              },
+              {
+                "name": "OriginalCall_Cell_or_Land"
+              },
+              {
+                "name": "Package_Desc"
+              },
+              {
+                "name": "SKeyCallOriginType"
+              },
+              {
+                "name": "SKeyCallType"
+              },
+              {
+                "name": "SKeyCustomer"
+              },
+              {
+                "name": "SKeyDestinationCountry"
+              },
+              {
+                "name": "SKeyDestinationOperator"
+              },
+              {
+                "name": "SKeyOriginCountry"
+              },
+              {
+                "name": "SKeyOriginOperator"
+              },
+              {
+                "name": "SKeyPackage"
+              },
+              {
+                "name": "Time_hour"
+              }
+            ],
+            "hierarchies": [
+              {
+                "name": "H_Call_YearMonthDay"
+              },
+              {
+                "name": "H_customerPackages"
+              },
+              {
+                "name": "H_OriginRegionAreaCountry"
+              }
+            ],
+            "measures": [
+              {
+                "name": "CallDurationAverage"
+              },
+              {
+                "name": "NumberOfCustomersMakingCalls"
+              },
+              {
+                "name": "Previous year"
+              },
+              {
+                "name": "SumOfAmount"
+              },
+              {
+                "name": "SumofCallduration"
+              },
+              {
+                "name": "NumberOfCalls"
+              },
+              {
+                "name": "SumOfBillableDuration"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "משאבי אנוש",
+        "tables": [
+          {
+            "name": "Dim_Date",
+            "columns": [
+              {
+                "name": "Date"
+              },
+              {
+                "name": "DateKey"
+              },
+              {
+                "name": "DayName"
+              },
+              {
+                "name": "DayOfMonth"
+              },
+              {
+                "name": "DayOfQuarter"
+              },
+              {
+                "name": "DayOfWeekInMonth"
+              },
+              {
+                "name": "DayOfWeekInYear"
+              },
+              {
+                "name": "DayOfWeekUK"
+              },
+              {
+                "name": "DayOfWeekUSA"
+              },
+              {
+                "name": "DayOfYear"
+              },
+              {
+                "name": "DaySuffix"
+              },
+              {
+                "name": "FirstDayOfMonth"
+              },
+              {
+                "name": "FirstDayOfQuarter"
+              },
+              {
+                "name": "FirstDayOfYear"
+              },
+              {
+                "name": "FullDateUK"
+              },
+              {
+                "name": "FullDateUSA"
+              },
+              {
+                "name": "HolidayUK"
+              },
+              {
+                "name": "HolidayUSA"
+              },
+              {
+                "name": "IsHolidayUK"
+              },
+              {
+                "name": "IsHolidayUSA"
+              },
+              {
+                "name": "IsWeekdayStyle1"
+              },
+              {
+                "name": "IsWeekdayStyle2"
+              },
+              {
+                "name": "LastDayOfMonth"
+              },
+              {
+                "name": "LastDayOfQuarter"
+              },
+              {
+                "name": "LastDayOfYear"
+              },
+              {
+                "name": "MMYYYY"
+              },
+              {
+                "name": "Month"
+              },
+              {
+                "name": "MonthName"
+              },
+              {
+                "name": "MonthOfQuarter"
+              },
+              {
+                "name": "MonthYear"
+              },
+              {
+                "name": "Quarter"
+              },
+              {
+                "name": "QuarterName"
+              },
+              {
+                "name": "WeekOfMonth"
+              },
+              {
+                "name": "WeekOfQuarter"
+              },
+              {
+                "name": "WeekOfYear"
+              },
+              {
+                "name": "Year"
+              },
+              {
+                "name": "YearName"
+              }
+            ],
+            "hierarchies": [
+              {
+                "name": "Year_Month_Date"
+              }
+            ]
+          },
+          {
+            "name": "dim_time",
+            "columns": [
+              {
+                "name": "HourOfDay"
+              },
+              {
+                "name": "MinuteOfHour"
+              },
+              {
+                "name": "SecondOfMinute"
+              },
+              {
+                "name": "TimeAltKey"
+              },
+              {
+                "name": "TimeKey"
+              },
+              {
+                "name": "TimeString"
+              }
+            ],
+            "hierarchies": [
+              {
+                "name": "Hour_Minute"
+              }
+            ]
+          },
+          {
+            "name": "DimCallOriginType",
+            "columns": [
+              {
+                "name": "DescCallOriginType"
+              },
+              {
+                "name": "Endtime"
+              },
+              {
+                "name": "IsCurrent"
+              },
+              {
+                "name": "KeyCallOriginType"
+              },
+              {
+                "name": "SKeyCallOriginType"
+              },
+              {
+                "name": "StartTime"
+              }
+            ]
+          },
+          {
+            "name": "DimCallTypes",
+            "columns": [
+              {
+                "name": "DescCallType"
+              },
+              {
+                "name": "DescCallTypeCategory"
+              },
+              {
+                "name": "DescCallTypeCode"
+              },
+              {
+                "name": "DescCallTypePriceCategory"
+              },
+              {
+                "name": "DescFullCallType"
+              },
+              {
+                "name": "Endtime"
+              },
+              {
+                "name": "IsCurrent"
+              },
+              {
+                "name": "SKeyCallType"
+              },
+              {
+                "name": "StartTime"
+              }
+            ],
+            "hierarchies": [
+              {
+                "name": "H_CallTypeCategory"
+              }
+            ]
+          },
+          {
+            "name": "dimCountries_destination",
+            "columns": [
+              {
+                "name": "DescArea"
+              },
+              {
+                "name": "DescCountry"
+              },
+              {
+                "name": "DescRegion"
+              },
+              {
+                "name": "KeyCountry"
+              },
+              {
+                "name": "SKeyCountry"
+              }
+            ]
+          },
+          {
+            "name": "dimCountries_Origin",
+            "columns": [
+              {
+                "name": "DescArea"
+              },
+              {
+                "name": "DescCountry"
+              },
+              {
+                "name": "DescRegion"
+              },
+              {
+                "name": "KeyCountry"
+              },
+              {
+                "name": "SKeyCountry"
+              }
+            ]
+          },
+          {
+            "name": "DimCustomers",
+            "columns": [
+              {
+                "name": "DescCusomterPackage"
+              },
+              {
+                "name": "DescCustomerAddress"
+              },
+              {
+                "name": "DescCustomerLineCountry"
+              },
+              {
+                "name": "DescCustomerLineOperator"
+              },
+              {
+                "name": "DescCustomerName"
+              },
+              {
+                "name": "Endtime"
+              },
+              {
+                "name": "IsCurrent"
+              },
+              {
+                "name": "KeyCustomer"
+              },
+              {
+                "name": "SKeyCustomer"
+              },
+              {
+                "name": "StartTime"
+              }
+            ],
+            "hierarchies": [
+              {
+                "name": "Customer_Package"
+              }
+            ]
+          },
+          {
+            "name": "DimOperators_destination",
+            "columns": [
+              {
+                "name": "DescKeyPrefix"
+              },
+              {
+                "name": "DescOperator"
+              },
+              {
+                "name": "Endtime"
+              },
+              {
+                "name": "IsCurrent"
+              },
+              {
+                "name": "KeyOperator"
+              },
+              {
+                "name": "SKeyOperator"
+              },
+              {
+                "name": "StartTime"
+              }
+            ]
+          },
+          {
+            "name": "DimOperators_Origin",
+            "columns": [
+              {
+                "name": "DescKeyPrefix"
+              },
+              {
+                "name": "DescOperator"
+              },
+              {
+                "name": "Endtime"
+              },
+              {
+                "name": "IsCurrent"
+              },
+              {
+                "name": "KeyOperator"
+              },
+              {
+                "name": "SKeyOperator"
+              },
+              {
+                "name": "StartTime"
+              }
+            ]
+          },
+          {
+            "name": "DimPackageCatalog",
+            "columns": [
+              {
+                "name": "CodePackageActivitiesDays"
+              },
+              {
+                "name": "DatePackageCreation"
+              },
+              {
+                "name": "DatePackageEnd"
+              },
+              {
+                "name": "DescPackage"
+              },
+              {
+                "name": "DescPackageStatus"
+              },
+              {
+                "name": "Endtime"
+              },
+              {
+                "name": "IsCurrent"
+              },
+              {
+                "name": "KeyPackage"
+              },
+              {
+                "name": "SKeyPackage"
+              },
+              {
+                "name": "StartTime"
+              }
+            ]
+          },
+          {
+            "name": "FactUsage",
+            "columns": [
+              {
+                "name": "Amount"
+              },
+              {
+                "name": "BillableAmount"
+              },
+              {
+                "name": "BillableDuration"
+              },
+              {
+                "name": "Calculated Column 1"
+              },
+              {
+                "name": "Call_date"
+              },
+              {
+                "name": "call_Dest_Area"
+              },
+              {
+                "name": "call_dest_country"
+              },
+              {
+                "name": "call_Dest_Region"
+              },
+              {
+                "name": "call_origin_Area"
+              },
+              {
+                "name": "call_origin_country"
+              },
+              {
+                "name": "call_origin_region"
+              },
+              {
+                "name": "call_type_Category"
+              },
+              {
+                "name": "Call_Type_desc"
+              },
+              {
+                "name": "call_type_price_category"
+              },
+              {
+                "name": "CallDayOfWeek"
+              },
+              {
+                "name": "CallId"
+              },
+              {
+                "name": "CallMonth"
+              },
+              {
+                "name": "calltypeCode"
+              },
+              {
+                "name": "CallYear"
+              },
+              {
+                "name": "Customer_Name"
+              },
+              {
+                "name": "customerPackage"
+              },
+              {
+                "name": "Dest_operator_Desc"
+              },
+              {
+                "name": "Dest_operator_prefix"
+              },
+              {
+                "name": "Discount"
+              },
+              {
+                "name": "Discount_Percent"
+              },
+              {
+                "name": "Duration"
+              },
+              {
+                "name": "KeyCallDate"
+              },
+              {
+                "name": "KeyCallTime"
+              },
+              {
+                "name": "Origin_operator_Desc"
+              },
+              {
+                "name": "Origin_operator_prefix"
+              },
+              {
+                "name": "OriginalCall_Cell_or_Land"
+              },
+              {
+                "name": "Package_Desc"
+              },
+              {
+                "name": "SKeyCallOriginType"
+              },
+              {
+                "name": "SKeyCallType"
+              },
+              {
+                "name": "SKeyCustomer"
+              },
+              {
+                "name": "SKeyDestinationCountry"
+              },
+              {
+                "name": "SKeyDestinationOperator"
+              },
+              {
+                "name": "SKeyOriginCountry"
+              },
+              {
+                "name": "SKeyOriginOperator"
+              },
+              {
+                "name": "SKeyPackage"
+              },
+              {
+                "name": "Time_hour"
+              }
+            ],
+            "hierarchies": [
+              {
+                "name": "H_Call_YearMonthDay"
+              },
+              {
+                "name": "H_customerPackages"
+              },
+              {
+                "name": "H_OriginRegionAreaCountry"
+              }
+            ],
+            "measures": [
+              {
+                "name": "CallDurationAverage"
+              },
+              {
+                "name": "NumberOfCustomersMakingCalls"
+              },
+              {
+                "name": "Previous year"
+              },
+              {
+                "name": "SumOfAmount"
+              },
+              {
+                "name": "SumofCallduration"
+              },
+              {
+                "name": "NumberOfCalls"
+              },
+              {
+                "name": "SumOfBillableDuration"
+              }
+            ]
+          }
+        ]
       }
     ],
     "annotations": [
